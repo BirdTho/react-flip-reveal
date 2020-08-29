@@ -1,0 +1,7 @@
+*.stories.*
+example
+.storybook
+.history
+
+node_modules/
+stories/

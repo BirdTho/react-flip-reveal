@@ -1,0 +1,14 @@
+.bean-digit-container {
+  display: inline-block;
+  overflow: hidden;
+  float: left;
+}
+
+.bean-digit-roller {
+  flex-direction: column;
+  display: flex;
+}
+
+.bean-digit-roller-anim {
+  transition: width 0.3s, transform 0.3s;
+}

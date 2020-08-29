@@ -1,0 +1,30 @@
+.bean-counter {
+  font-size: 72px;
+}
+
+.bean-counter > span {
+  float: left;
+}
+
+.measuring-rod {
+  visibility: hidden;
+  left: -200px;
+  pointer-events: none;
+}
+
+.bean-black {
+  color: lightgray;
+  background-color: rgb(30, 30, 30);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.bean-black > span, .bean-black .bean-digit-container {
+  border-left: 2px solid darkgray;
+  background-color: rgb(30, 30, 30);
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.bean-black .bean-digit-container:last-child {
+  border-right: 2px solid darkgray;
+}
