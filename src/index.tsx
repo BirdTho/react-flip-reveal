@@ -1,3 +1,3 @@
-import BeanCounter from './BeanCounter'
+import FlipReveal from './FlipReveal'
 
-export default BeanCounter
+export default FlipReveal

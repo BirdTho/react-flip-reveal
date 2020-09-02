@@ -1,22 +1,22 @@
-# react-bean-counter
+# react-flip-reveal
 
-> A spinning dial counter for React, similar to price spinners in the Robinhood stock app.
+> A progressively revealing text display for animating in dynamic text
 
-[![NPM](https://img.shields.io/npm/v/react-bean-counter.svg)](https://www.npmjs.com/package/react-bean-counter) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-flip-reveal.svg)](https://www.npmjs.com/package/react-flip-reveal) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-![](BeanCounter.gif)
+![](FlipReveal.gif)
 
 ## Install
 
 ```bash
-npm install --save react-bean-counter
+npm install --save react-flip-reveal
 ```
 
 ## Demo
 
 ```bash
-git clone git@github.com:BirdTho/react-bean-counter.git
-cd react-bean-counter
+git clone git@github.com:BirdTho/react-flip-reveal.git
+cd react-flip-reveal
 npm install
 npm run storybook
 ```
@@ -26,31 +26,55 @@ npm run storybook
 ```tsx
 import React from 'react'
 
-import BeanCounter from 'react-bean-counter'
+import FlipReveal from 'react-flip-reveal'
 
 class Example extends Component {
   render() {
-    return <BeanCounter value={1234.56} precision={2} className='custom-bean-style'/>
+    return <FlipReveal value={'I\'ve got a lovely bunch of coconuts'} delimiter=' ' className='custom-flip-reveal' delay={500}/>
   }
 }
 ```
 
 ### Custom styling
 
-`BeanCounter` will automatically calculate metrics of digits based on the size of the font. It uses an offscreen element to measure digit dimensions for a given font and font size.
+`FlipReveal` accepts 5 main arguments:
 
-For instance, you can pass in custom class name to the BeanCounter using the optional `className` parameter.
+```Typescript
+interface FlipRevealProps {
+  value: string // The string to be rendered
+  delimiter?: string // Optional, defaults to '' (empty string), the character used to break apart the string
+  delay?: number // Optional, defaults to 500 (milliseconds), the delay between revealing words
+  resetOnChange?: boolean // Optional, defaults to true, if appending to the value property will continue revealing from where it was left off, or reset the whole display "Append mode"
+  className?: string // Optional, custom classname for styling the FlipReveal element
+}
+```
+
+
+You can pass in custom class name to the FlipReveal using the optional `className` parameter. You'll most likely adjust the font, I'd guess.
 
 ```css
-.custom-bean-style {
-  font-size: 16px;
-  font-family: Helvetica, sans-serif;
-  color: white;
+.custom-flip-reveal.flip-container {
+  font-size: 40px;
 }
 
-.custom-bean-style > span, .custom-bean-style .bean-digit-container {
-  background-color: rgb(30, 30, 30);
+.custom-flip-reveal.flip-container > div {
+  display: inline-block;
 }
+
+.custom-flip-reveal .flip-word {
+  transform-style: preserve-3d;
+  transform-origin: 0 50%;
+  transform: perspective(300px);
+}
+
+.custom-flip-reveal .flip-word.hidden {
+  transform: perspective(300px) rotateY(90deg);
+}
+
+.custom-flip-reveal .flip-word.reveal {
+  transform: perspective(300px) rotateY(0deg);
+}
+
 ```
 
 ## License
